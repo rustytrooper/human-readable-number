@@ -2,7 +2,7 @@ module.exports = function toReadable (number) {
     let arr = ['zero','one','two','three','four','five','six','seven','eight','nine','ten']
     let strFromNum = String(number)
     let output
-    
+
     for (let i in arr){
         if (strFromNum===i){
            output = arr[i]
@@ -47,7 +47,7 @@ module.exports = function toReadable (number) {
                             output= decimalDigit.slice(0,2)+'enty' + ' '+ unitDigit;
                         }
                         else if(arrFromNum[0]==3){
-                            arrFromNum[0]==3 && arrFromNum[1]==0 ? output = decimalDigit.slice(0,2)+'irty ' :
+                            arrFromNum[0]==3 && arrFromNum[1]==0 ? output = decimalDigit.slice(0,2)+'irty' :
                             output = decimalDigit.slice(0,2) + 'irty' + ' ' + unitDigit
                         } 
                         else if (arrFromNum[0]==4) {
@@ -105,9 +105,11 @@ module.exports = function toReadable (number) {
             if (arrFromNum[1]==0 && arrFromNum[2]==0) {
                 output = hundreds
             }
-            // if (arrFromNum[2]>=1 && arrFromNum[2]<=9) {
-            //     output = hundreds + String(arr[arrFromNum[2]])
-            // }
+            
+            if (arrFromNum[1]==1 && arrFromNum[2]==0) {
+                output = hundreds + ' ' + 'ten';
+            }
+
             if(arrFromNum[1]==0) {
                arrFromNum[2]==0 ? output= hundreds:
                output = hundreds + ' ' + unitDigit
@@ -118,16 +120,16 @@ module.exports = function toReadable (number) {
                 output = hundreds + ' ' + 'twenty '+ unitDigit
             }
             if (arrFromNum[1]==3) {
-                arrFromNum[2]==0 ? output = hundreds + 'thirty' :
+                arrFromNum[2]==0 ? output = hundreds + ' ' + 'thirty' :
                 output = hundreds + ' ' + 'thirty ' + unitDigit
             }
             if (arrFromNum[1]==4) {
-                arrFromNum[2]==0 ? output = hundreds + 'forty' :
+                arrFromNum[2]==0 ? output = hundreds + ' ' + 'forty' :
                 output = hundreds + ' ' + 'forty ' + unitDigit
             }
             if (arrFromNum[1]==5) {
                 arrFromNum[2]==0 ? output = hundreds +' fifty' :
-                output = hundreds + ' ' + ' fifty ' + unitDigit
+                output = hundreds + ' ' + 'fifty ' + unitDigit
             }
             if (arrFromNum[1]==6 || arrFromNum[1]==7 || arrFromNum[1]==9) {
                 arrFromNum[2]==0 ? output = hundreds + ' ' + String(arr[arrFromNum[1]]) +'ty' :
